@@ -26,8 +26,9 @@ jobs:
     steps:
       - uses: actions/download-artifact@v3
         with:
-          name: "build-artifact"
+          name: build-artifact
           path: dist
 
-      - name: Publish release
-        run: echo "Uploading!"
+      - uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          repository-url: https://test.pypi.org/legacy/
