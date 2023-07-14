@@ -3,23 +3,22 @@ on: push
 jobs:
   publish-docs-using-docker:
     runs-on: ubuntu-latest
-      steps:
-      needs: [build-docs-using-docker]
-        -
-          name: Checkout
-          uses: actions/checkout@v3
-        -
-          name: Login to GitHub Container Registry
-          uses: docker/login-action@v2
-          with:
-            registry: ghcr.io
-            username: ${{ github.actor }}
-            password: ${{ secrets.GITHUB_TOKEN }}
-        -
-          name: Build and push catalog image
-          uses: docker/build-push-action@v4
-          with:
-            context: .
-            push: true
-            platforms: linux/amd64,linux/arm64
-            tags: ghcr.io/marshallmcdonnell/intersect-training-cicd-test:${{ github.ref_name }}-${{github.sha}}
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v3
+      -
+        name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      -
+        name: Build and push catalog image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          platforms: linux/amd64,linux/arm64
+          tags: ghcr.io/marshallmcdonnell/intersect-training-cicd-test:${{ github.ref_name }}-${{github.sha}}
