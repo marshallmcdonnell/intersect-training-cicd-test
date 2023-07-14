@@ -1,7 +1,7 @@
 name: Documentation CD
 on: push
 jobs:
-    publish-docs-using-docker:
+  publish-docs-using-docker:
     runs-on: ubuntu-latest
       steps:
       needs: [build-docs-using-docker]
