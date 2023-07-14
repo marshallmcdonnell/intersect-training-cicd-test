@@ -24,4 +24,4 @@ jobs:
           context: .
           push: true
           platforms: linux/amd64,linux/arm64
-          tags: ghcr.io/marshallmcdonnell/intersect-training-cicd-test:${{ github.ref_name }}-${{github.sha}}
+          tags: ghcr.io/marshallmcdonnell/intersect-training-cicd-test:latest
