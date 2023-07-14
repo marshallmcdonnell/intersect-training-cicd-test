@@ -1,0 +1,8 @@
+name: Documentation CI
+on: push
+jobs:
+  build-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build docs via Docker
+        run: docker build -t my-docs .
